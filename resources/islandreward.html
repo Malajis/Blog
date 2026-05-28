@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="zh-CN" data-theme="blue">
+<head>
+  <meta charset="UTF-8">
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>IslandReward - 空岛数据导出与周目奖励 - Malajis's Blog</title>
+  <link rel="stylesheet" href="../style.css">
+</head>
+<body>
+  <nav>
+    <div class="nav-inner">
+      <a href="../" class="logo">🌿 Malajis's Blog</a>
+      <div class="nav-right">
+        <div class="nav-links">
+          <a href="../">首页</a>
+          <a href="../pages/resources">资源</a>
+          <a href="../pages/mygirl">我的女孩</a>
+        </div>
+        <div class="theme-toggle">
+          <button class="theme-btn" onclick="this.parentElement.classList.toggle('open')" title="切换主题">☀</button>
+          <div class="theme-dropdown">
+            <span class="theme-option" data-theme="blue">蓝色</span>
+            <span class="theme-option" data-theme="green">墨绿</span>
+            <span class="theme-option" data-theme="purple">紫色</span>
+            <span class="theme-option" data-theme="warm">暖橙</span>
+            <span class="theme-option" data-theme="dark">暗色</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </nav>
+  <div class="container">
+    <main>
+      <div class="article-card">
+        <h1 class="post-title">IslandReward - 空岛数据导出与周目奖励</h1>
+        <div class="meta">📅 2026-03-29 &nbsp; | &nbsp; 🏷️ 资源</div>
+        <div class="post-content">
+          <p>可以导出空岛数据，并在周目更换之后给予玩家相对应奖励。</p>
+          <p><a href="https://github.com/Malajis/IslandReward/releases" class="btn-green" target="_blank" rel="noopener">点击下载该插件</a> <a href="https://github.com/Malajis/IslandReward" class="btn-orange" target="_blank" rel="noopener">查看源代码</a></p>
+          <h2>前置插件</h2>
+          <p>Bentobox / Bskyblock</p>
+          <p>未对Askyblock进行过测试，理论上不行，我不了解Askyblock空岛的数据保存路径与方式。</p>
+          <h2>功能说明</h2>
+          <p>可以导出上个周目玩家的岛屿等级数据。</p>
+          <p>可以根据导出数据中玩家的进度给予相对应奖励。</p>
+          <p>玩家可以查看别的玩家的周目信息。</p>
+          <figure><img src="/uploads/images/QQ_1774724395846.png" alt=""></figure>
+          <figure><img src="/uploads/images/QQ20260510-002040.png" alt=""></figure>
+          <figure><img src="/uploads/images/QQ20260510-002051.png" alt=""></figure>
+          <figure><img src="/uploads/images/QQ20260510-002122.png" alt=""></figure>
+          <figure><img src="/uploads/images/QQ20260510-002142.png" alt=""></figure>
+          <figure><img src="/uploads/images/QQ20260510-001731-1.png" alt=""></figure>
+          <h2>插件命令与权限</h2>
+          <h3>玩家命令</h3>
+          <table><tbody><tr><td>/ir claim</td><td>领取当前配置的前周目奖励</td></tr><tr><td>/ir myinfo</td><td>打开自己的周目数据总览 GUI</td></tr><tr><td>/ir info 玩家</td><td>查看其他玩家的周目数据</td></tr></tbody></table>
+          <h3>管理员命令</h3>
+          <table><thead><tr><th>命令</th><th>描述</th></tr></thead><tbody><tr><td>/ir export</td><td>从 BentoBox 导出岛屿等级数据</td></tr><tr><td>/ir reload</td><td>重载配置与数据文件</td></tr><tr><td>/ir reimport</td><td>重新从文件加载周目数据</td></tr></tbody></table>
+          <h2>配置文件：</h2>
+          <pre><code>export:
+  enabled: false
+  data-file: "island_data.yml"
+completion-threshold: 10000
+current-week: "第二周目"
+previous-week: "第一周目"
+previous-week-data: 1
+rewards:
+  souvenir:
+    material: NAME_TAG
+    name: "星 {player} 的 {previous_week} 纪念品 星"
+  level-rewards:
+    10000:
+      items:
+        - material: DIAMOND
+          amount: 64</code></pre>
+          <h2>换周目的步骤是什么？</h2>
+          <ol>
+            <li>关闭服务器，备份数据</li>
+            <li>修改 config.yml：更新 previous-week、current-week，将 export.enabled 设为 true</li>
+            <li>启动服务器，执行 /ir export 导出上一周目数据</li>
+            <li>执行 /ir reload 重载配置</li>
+            <li>玩家使用 /ir claim 领取奖励</li>
+          </ol>
+          <p>我强烈建议你搭配我的 <a href="weeklystorage">WeeklyStorage</a> 来使用，这里默认配置发给玩家的纪念品是可以存入周目仓库的。</p>
+        </div>
+      </div>
+    </main>
+    <aside>
+      <div class="widget"><h3>👤 关于博主</h3><p>一个 Minecraft 服主 & 插件开发者。喜欢折腾服务器、分享学习过程。</p></div>
+      <div class="widget"><h3>📂 分类目录</h3><ul><li><a href="../pages/fenxiang">分享 (2)</a></li><li><a href="../pages/jianzhan">建站 (2)</a></li></ul></div>
+      <div class="widget"><h3>📦 资源列表</h3><ul><li><a href="islandreward">IslandReward</a></li><li><a href="weeklystorage">WeeklyStorage</a></li><li><a href="betterrespawn">BetterRespawn</a></li><li><a href="betteraccess">JoinActionbar</a></li><li><a href="welcome">Welcome</a></li><li><a href="equipmentprotect">EquipmentProtect</a></li></ul></div>
+    </aside>
+  </div>
+  <footer><p>© 2026 Malajis's Blog</p><p><a href="https://beian.miit.gov.cn/" target="_blank" rel="noopener">闽ICP备2026010795号-1</a></p></footer>
+  <button class="back-to-top" onclick="window.scrollTo({top:0,behavior:'smooth'})" title="回到顶部">↑</button>
+  <script>(function(){var s=localStorage.getItem('theme')||'blue';document.documentElement.setAttribute('data-theme',s);document.querySelectorAll('.theme-option').forEach(function(d){d.addEventListener('click',function(){var t=this.dataset.theme;document.documentElement.setAttribute('data-theme',t);localStorage.setItem('theme',t);this.closest('.theme-toggle').classList.remove('open');});});document.addEventListener('click',function(e){if(!e.target.closest('.theme-toggle')){document.querySelectorAll('.theme-toggle.open').forEach(function(t){t.classList.remove('open');});}});})();</script>
+</body>
+</html>

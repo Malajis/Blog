@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="zh-CN" data-theme="blue">
+<head>
+  <meta charset="UTF-8">
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>EquipmentProtect - 装备护卫 - Malajis's Blog</title>
+  <link rel="stylesheet" href="../style.css">
+</head>
+<body>
+  <nav>
+    <div class="nav-inner">
+      <a href="../" class="logo">🌿 Malajis's Blog</a>
+      <div class="nav-right">
+        <div class="nav-links">
+          <a href="../">首页</a>
+          <a href="../pages/resources">资源</a>
+          <a href="../pages/mygirl">我的女孩</a>
+        </div>
+        <div class="theme-toggle">
+          <button class="theme-btn" onclick="this.parentElement.classList.toggle('open')" title="切换主题">☀</button>
+          <div class="theme-dropdown">
+            <span class="theme-option" data-theme="blue">蓝色</span>
+            <span class="theme-option" data-theme="green">墨绿</span>
+            <span class="theme-option" data-theme="purple">紫色</span>
+            <span class="theme-option" data-theme="warm">暖橙</span>
+            <span class="theme-option" data-theme="dark">暗色</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </nav>
+  <div class="container">
+    <main>
+      <div class="article-card">
+        <h1 class="post-title">EquipmentProtect - 装备护卫</h1>
+        <div class="meta">📅 2026-03-29 &nbsp; | &nbsp; 🏷️ 资源</div>
+        <div class="post-content">
+          <p>防止玩家装备损坏、丢失，以及防止绑定诅咒装备的插件。</p>
+          <p><a href="https://github.com/Malajis/EquipmentProtect/releases" class="btn-green" target="_blank" rel="noopener">点击下载该插件</a> <a href="https://github.com/Malajis/EquipmentProtect" class="btn-orange" target="_blank" rel="noopener">查看源代码</a></p>
+          <h2>功能说明</h2>
+          <p>保护玩家装备免受损坏或意外丢失。</p><p>自动移除装备上的绑定诅咒。</p><p>防止玩家误将带有附魔的装备丢出。</p>
+          <figure><img src="https://pic1.imgdb.cn/item/6a01da725e6a426e45a45594.gif" alt="防爆.gif"><figcaption>防止装备损坏丢失</figcaption></figure>
+          <figure><img src="https://pic1.imgdb.cn/item/6a01da715e6a426e45a45591.gif" alt="防丢.gif"><figcaption>防止绑定诅咒装备</figcaption></figure>
+          <figure><img src="https://pic1.imgdb.cn/item/6a01da715e6a426e45a45592.gif" alt="绑定诅咒.gif"><figcaption>防止误丢附魔装备</figcaption></figure>
+          <h2>插件命令与权限</h2>
+          <p><strong>/epreload</strong><br>重载配置文件<br>权限 - blunderprevent.epreload</p>
+          <h2>配置文件：</h2>
+          <pre><code>Config:
+  DropListener: true
+  BreakListener: true
+  Durability: 0.05
+  CurseListener: true
+Message:
+  prefix: "&f[&6装备保护&f] "
+  reload: "&a配置重载成功！"
+  no-perm: "&c你没有权限执行此操作！"</code></pre>
+        </div>
+      </div>
+    </main>
+    <aside>
+      <div class="widget"><h3>👤 关于博主</h3><p>一个 Minecraft 服主 & 插件开发者。喜欢折腾服务器、分享学习过程。</p></div>
+      <div class="widget"><h3>📂 分类目录</h3><ul><li><a href="../pages/fenxiang">分享 (2)</a></li><li><a href="../pages/jianzhan">建站 (2)</a></li></ul></div>
+      <div class="widget"><h3>📦 资源列表</h3><ul><li><a href="islandreward">IslandReward</a></li><li><a href="weeklystorage">WeeklyStorage</a></li><li><a href="betterrespawn">BetterRespawn</a></li><li><a href="betteraccess">JoinActionbar</a></li><li><a href="welcome">Welcome</a></li><li><a href="equipmentprotect">EquipmentProtect</a></li></ul></div>
+    </aside>
+  </div>
+  <footer><p>© 2026 Malajis's Blog</p><p><a href="https://beian.miit.gov.cn/" target="_blank" rel="noopener">闽ICP备2026010795号-1</a></p></footer>
+  <button class="back-to-top" onclick="window.scrollTo({top:0,behavior:'smooth'})" title="回到顶部">↑</button>
+  <script>(function(){var s=localStorage.getItem('theme')||'blue';document.documentElement.setAttribute('data-theme',s);document.querySelectorAll('.theme-option').forEach(function(d){d.addEventListener('click',function(){var t=this.dataset.theme;document.documentElement.setAttribute('data-theme',t);localStorage.setItem('theme',t);this.closest('.theme-toggle').classList.remove('open');});});document.addEventListener('click',function(e){if(!e.target.closest('.theme-toggle')){document.querySelectorAll('.theme-toggle.open').forEach(function(t){t.classList.remove('open');});}});})();</script>
+</body>
+</html>

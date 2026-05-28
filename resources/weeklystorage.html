@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="zh-CN" data-theme="blue">
+<head>
+  <meta charset="UTF-8">
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>WeeklyStorage - 周目仓库及玩家权益管理 - Malajis's Blog</title>
+  <link rel="stylesheet" href="../style.css">
+</head>
+<body>
+  <nav>
+    <div class="nav-inner">
+      <a href="../" class="logo">🌿 Malajis's Blog</a>
+      <div class="nav-right">
+        <div class="nav-links">
+          <a href="../">首页</a>
+          <a href="../pages/resources">资源</a>
+          <a href="../pages/mygirl">我的女孩</a>
+        </div>
+        <div class="theme-toggle">
+          <button class="theme-btn" onclick="this.parentElement.classList.toggle('open')" title="切换主题">☀</button>
+          <div class="theme-dropdown">
+            <span class="theme-option" data-theme="blue">蓝色</span>
+            <span class="theme-option" data-theme="green">墨绿</span>
+            <span class="theme-option" data-theme="purple">紫色</span>
+            <span class="theme-option" data-theme="warm">暖橙</span>
+            <span class="theme-option" data-theme="dark">暗色</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </nav>
+  <div class="container">
+    <main>
+      <div class="article-card">
+        <h1 class="post-title">WeeklyStorage - 周目仓库及玩家权益管理</h1>
+        <div class="meta">📅 2026-03-29 &nbsp; | &nbsp; 🏷️ 资源</div>
+        <div class="post-content">
+          <p>提供纪念品仓库和权益系统两大核心功能。玩家可以将纪念品存入仓库永久保存，管理员可以管理玩家购买的氪金权益。</p>
+          <p><a href="https://github.com/Malajis/WeeklyStorage/releases" class="btn-green" target="_blank" rel="noopener">点击下载该插件</a> <a href="https://github.com/Malajis/WeeklyStorage" class="btn-orange" target="_blank" rel="noopener">查看源代码</a></p>
+          <h2>功能说明</h2>
+          <p>提供一个周目仓库，玩家可以根据管理员的配置将规定物品放入。</p>
+          <p>内置一个物品库用来保存增值道具，管理员可以将道具保存至仓库并发放给用户权益，每次更换周目后重置一次领取记录即可实现增值道具的自动发放。</p>
+          <figure><img src="/uploads/images/QQ_1774723314396.png" alt=""></figure>
+          <figure><img src="/uploads/images/QQ20260510-000647.png" alt=""></figure>
+          <h2>插件命令与权限</h2>
+          <h3>玩家指令</h3>
+          <table><thead><tr><th>指令</th><th>描述</th></tr></thead><tbody><tr><td>/ws store</td><td>打开纪念品仓库</td></tr><tr><td>/ws myrights</td><td>查看自己拥有的权益</td></tr><tr><td>/ws claim</td><td>领取所有未领取的权益</td></tr><tr><td>/ws help</td><td>查看帮助</td></tr></tbody></table>
+          <h3>管理员指令</h3>
+          <table><thead><tr><th>指令</th><th>说明</th></tr></thead><tbody><tr><td>/ws memento open 玩家</td><td>打开玩家的纪念品仓库</td></tr><tr><td>/ws memento clear 玩家</td><td>清空玩家的纪念品仓库</td></tr><tr><td>/ws rights create 名称</td><td>从手中物品创建权益</td></tr><tr><td>/ws rights grant 玩家 名称</td><td>添加权益并立即发放</td></tr><tr><td>/ws reload</td><td>重载所有配置</td></tr></tbody></table>
+          <h2>配置文件：</h2>
+          <p>config.yml</p>
+          <pre><code>rights:
+  enabled: false
+  rights-file: "rights.yml"
+memento:
+  allowed-lore:
+    - "纪念品"
+    - "抽奖"
+  allowed-materials:
+    - "DRAGON_EGG"
+    - "DRAGON_HEAD"
+  max-size: 54</code></pre>
+        </div>
+      </div>
+    </main>
+    <aside>
+      <div class="widget"><h3>👤 关于博主</h3><p>一个 Minecraft 服主 & 插件开发者。喜欢折腾服务器、分享学习过程。</p></div>
+      <div class="widget"><h3>📂 分类目录</h3><ul><li><a href="../pages/fenxiang">分享 (2)</a></li><li><a href="../pages/jianzhan">建站 (2)</a></li></ul></div>
+      <div class="widget"><h3>📦 资源列表</h3><ul><li><a href="islandreward">IslandReward</a></li><li><a href="weeklystorage">WeeklyStorage</a></li><li><a href="betterrespawn">BetterRespawn</a></li><li><a href="betteraccess">JoinActionbar</a></li><li><a href="welcome">Welcome</a></li><li><a href="equipmentprotect">EquipmentProtect</a></li></ul></div>
+    </aside>
+  </div>
+  <footer><p>© 2026 Malajis's Blog</p><p><a href="https://beian.miit.gov.cn/" target="_blank" rel="noopener">闽ICP备2026010795号-1</a></p></footer>
+  <button class="back-to-top" onclick="window.scrollTo({top:0,behavior:'smooth'})" title="回到顶部">↑</button>
+  <script>(function(){var s=localStorage.getItem('theme')||'blue';document.documentElement.setAttribute('data-theme',s);document.querySelectorAll('.theme-option').forEach(function(d){d.addEventListener('click',function(){var t=this.dataset.theme;document.documentElement.setAttribute('data-theme',t);localStorage.setItem('theme',t);this.closest('.theme-toggle').classList.remove('open');});});document.addEventListener('click',function(e){if(!e.target.closest('.theme-toggle')){document.querySelectorAll('.theme-toggle.open').forEach(function(t){t.classList.remove('open');});}});})();</script>
+</body>
+</html>

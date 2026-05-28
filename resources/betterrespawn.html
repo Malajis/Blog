@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="zh-CN" data-theme="blue">
+<head>
+  <meta charset="UTF-8">
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>BetterRespawn - 更好的重生 - Malajis's Blog</title>
+  <link rel="stylesheet" href="../style.css">
+</head>
+<body>
+  <nav>
+    <div class="nav-inner">
+      <a href="../" class="logo">🌿 Malajis's Blog</a>
+      <div class="nav-right">
+        <div class="nav-links">
+          <a href="../">首页</a>
+          <a href="../pages/resources">资源</a>
+          <a href="../pages/mygirl">我的女孩</a>
+        </div>
+        <div class="theme-toggle">
+          <button class="theme-btn" onclick="this.parentElement.classList.toggle('open')" title="切换主题">☀</button>
+          <div class="theme-dropdown">
+            <span class="theme-option" data-theme="blue">蓝色</span>
+            <span class="theme-option" data-theme="green">墨绿</span>
+            <span class="theme-option" data-theme="purple">紫色</span>
+            <span class="theme-option" data-theme="warm">暖橙</span>
+            <span class="theme-option" data-theme="dark">暗色</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </nav>
+  <div class="container">
+    <main>
+      <div class="article-card">
+        <h1 class="post-title">BetterRespawn - 更好的重生</h1>
+        <div class="meta">📅 2026-03-29 &nbsp; | &nbsp; 🏷️ 资源</div>
+        <div class="post-content">
+          <p>一款改变玩家重生规则的插件，通过加入服务器优化玩家的游戏体验。</p>
+          <p><a href="https://github.com/Malajis/BetterRespawn/releases" class="btn-green" target="_blank" rel="noopener">点击下载该插件</a> <a href="https://github.com/Malajis/BetterRespawn" class="btn-orange" target="_blank" rel="noopener">查看源代码</a></p>
+          <h2>功能说明</h2>
+          <p>可以设置玩家在死亡后原地重生，并进入重生倒计时。</p>
+          <p>倒计时期间玩家无法进行任何交互，处于无敌状态且可以飞行。</p>
+          <p>倒计时结束后自动重生并且传送到脚下最近的方块。</p>
+          <p>如果脚下不存在方块则传送到世界出生点。</p>
+          <figure><img src="https://pic1.imgdb.cn/item/69c81e6b4066a6014cf5c42d.gif" alt="欢迎.gif"></figure>
+          <h2>插件命令与权限</h2>
+          <p><strong>/br reload</strong><br>重载配置文件<br>权限 - betterrespawn.reload</p>
+          <p>管理员特权（不扣经验、无倒计时） - 权限 - betterrespawn.admin</p>
+          <h2>配置文件：</h2>
+          <pre><code>enable-feature: false
+auto-respawn: true
+respawn-time: 5
+experience-cost: 0.25</code></pre>
+        </div>
+      </div>
+    </main>
+    <aside>
+      <div class="widget"><h3>👤 关于博主</h3><p>一个 Minecraft 服主 & 插件开发者。喜欢折腾服务器、分享学习过程。</p></div>
+      <div class="widget"><h3>📂 分类目录</h3><ul><li><a href="../pages/fenxiang">分享 (2)</a></li><li><a href="../pages/jianzhan">建站 (2)</a></li></ul></div>
+      <div class="widget"><h3>📦 资源列表</h3><ul><li><a href="islandreward">IslandReward</a></li><li><a href="weeklystorage">WeeklyStorage</a></li><li><a href="betterrespawn">BetterRespawn</a></li><li><a href="betteraccess">JoinActionbar</a></li><li><a href="welcome">Welcome</a></li><li><a href="equipmentprotect">EquipmentProtect</a></li></ul></div>
+    </aside>
+  </div>
+  <footer><p>© 2026 Malajis's Blog</p><p><a href="https://beian.miit.gov.cn/" target="_blank" rel="noopener">闽ICP备2026010795号-1</a></p></footer>
+  <button class="back-to-top" onclick="window.scrollTo({top:0,behavior:'smooth'})" title="回到顶部">↑</button>
+  <script>(function(){var s=localStorage.getItem('theme')||'blue';document.documentElement.setAttribute('data-theme',s);document.querySelectorAll('.theme-option').forEach(function(d){d.addEventListener('click',function(){var t=this.dataset.theme;document.documentElement.setAttribute('data-theme',t);localStorage.setItem('theme',t);this.closest('.theme-toggle').classList.remove('open');});});document.addEventListener('click',function(e){if(!e.target.closest('.theme-toggle')){document.querySelectorAll('.theme-toggle.open').forEach(function(t){t.classList.remove('open');});}});})();</script>
+</body>
+</html>

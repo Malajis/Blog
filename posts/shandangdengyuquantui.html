@@ -1,0 +1,68 @@
+﻿<!DOCTYPE html>
+<html lang="zh-CN" data-theme="blue">
+<head>
+  <meta charset="UTF-8">
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>删档等于劝退：利用DeepSeek破局 - Malajis's Blog</title>
+  <link rel="stylesheet" href="../style.css">
+</head>
+<body>
+  <nav>
+    <div class="nav-inner">
+      <a href="../" class="logo">🌿 Malajis's Blog</a>
+      <div class="nav-right">
+        <div class="nav-links">
+          <a href="../">首页</a>
+          <a href="../pages/resources">资源</a>
+          <a href="../pages/mygirl">我的女孩</a>
+        </div>
+        <div class="theme-toggle">
+          <button class="theme-btn" onclick="this.parentElement.classList.toggle('open')" title="切换主题">☀</button>
+          <div class="theme-dropdown">
+            <span class="theme-option" data-theme="blue">蓝色</span>
+            <span class="theme-option" data-theme="green">墨绿</span>
+            <span class="theme-option" data-theme="purple">紫色</span>
+            <span class="theme-option" data-theme="warm">暖橙</span>
+            <span class="theme-option" data-theme="dark">暗色</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </nav>
+  <div class="container">
+    <main>
+      <div class="article-card">
+        <h1 class="post-title">删档等于劝退：利用DeepSeek破局</h1>
+        <div class="meta">📅 2026-03-28 &nbsp; | &nbsp; 🏷️ 分享</div>
+        <div class="post-content">
+          <p style="color:#d8483c;"><strong>已过时，现在更推荐使用自带SOLO功能的IDE接入大模型编程，文章中的方法效率太低了。</strong></p>
+          <p>一般来说当一个以生存为主的服务器发展到末期时，会出现大批玩家无事可做直至不上游戏的情况，新玩家也没有动力去游玩服务器，玩家越来越少，渐而形成一种恶性循环。前一段时间来说VC就已经碰到了这个问题，于是我就在想有没有什么办法可以解决这个情况，又不会导致大量玩家的不满，不让玩家的付之东流？</p>
+          <p>我翻阅了国内外各大论坛与平台，包括但不限于<a href="https://spigotmc.org">Spigot.mc</a>、<a href="https://minebbs.com">Minebbs</a>、<a href="https://klpbbs.com">Klpbbs</a>得到的结果是目前没有人提出该如何解决这个问题，他们的做法往往是直接删档或者干脆就不删档。于是我就开始构思怎么样可以删档的同时又让玩家能够满意，考虑到现在AI大模型编写的代码正确率颇高，于是我选择了借助DeepSeek完成我的设想。</p>
+          <figure><img src="/uploads/images/13.png" alt=""><figcaption>生成代码</figcaption></figure>
+          <p>当然，第一次给的代码通常会有很多的错误，有意思的是他基本不会出现代码上的错误，他的错误基本集中在代码的逻辑出现问题，这也可以理解，毕竟他很难完全清楚插件的配置路径，以及数据保存的逻辑是什么样的。所以这个时候就需要你去确认配置的路径，数据的格式是什么样的诸如此类，最后确认包路径，确认主类，优化代码结构，优化注释插件就算完工。（当然你不能少了测试，AI写的一开始经常一大堆毛病。）</p>
+          <figure><img src="/uploads/images/14.png" alt=""><figcaption>帮助AI确认文件结构</figcaption></figure>
+          <figure><img src="/uploads/images/15.png" alt=""><figcaption>要求优化代码</figcaption></figure>
+          <p>通过这种办法不断调试，最后得到两个插件。</p>
+          <p><a href="https://gitee.com/malajis/island-reward">IslandReward</a>：导出/导入 全服务器空岛等级及对应岛主ID，可以在config.yml中打开配置开关后，开始读取自身插件在前周目导出的数据，并根据读到的玩家数据给予奖励。</p>
+          <figure><img src="/uploads/images/18.png" alt=""><figcaption>奖励领取</figcaption></figure>
+          <figure><img src="/uploads/images/19.png" alt=""><figcaption>特殊纪念品</figcaption></figure>
+          <p><a href="https://gitee.com/malajis/weekly-storage">WeeklyStorage</a>：新增一个纪念品仓库，玩家可以将一些不影响游戏平衡的纪念品存入到插件仓库，同时新增了一个权益功能，他会保障玩家购买的增值道具不会因为周目的更换而丢失。</p>
+          <figure><img src="/uploads/images/16.png" alt=""><figcaption>权益的自动发放</figcaption></figure>
+          <figure><img src="/uploads/images/20.png" alt=""><figcaption>龙蛋与纪念品放入纪念品仓库</figcaption></figure>
+          <p>服主还可以利用类似通关次数的PAPI变量来设置排行榜，这么一来既能解决无周目导致的玩家兴致低迷，又可以解决删档导致的不愉快。</p>
+          <p>插件具体的教程在Gitee帖子中有详细介绍，构建好可以直接使用的版本我会放在博客资源当中，需要可以自取。</p>
+        </div>
+      </div>
+    </main>
+    <aside>
+      <div class="widget"><h3>👤 关于博主</h3><p>一个 Minecraft 服主 & 插件开发者。喜欢折腾服务器、分享学习过程。</p></div>
+      <div class="widget"><h3>📂 分类目录</h3><ul><li><a href="../pages/fenxiang">分享 (2)</a></li><li><a href="../pages/jianzhan">建站 (2)</a></li></ul></div>
+      <div class="widget"><h3>📦 资源列表</h3><ul><li><a href="../resources/islandreward">IslandReward</a></li><li><a href="../resources/weeklystorage">WeeklyStorage</a></li><li><a href="../resources/betterrespawn">BetterRespawn</a></li><li><a href="../resources/betteraccess">JoinActionbar</a></li><li><a href="../resources/welcome">Welcome</a></li><li><a href="../resources/equipmentprotect">EquipmentProtect</a></li></ul></div>
+    </aside>
+  </div>
+  <footer><p>© 2026 Malajis's Blog</p><p><a href="https://beian.miit.gov.cn/" target="_blank" rel="noopener">闽ICP备2026010795号-1</a></p></footer>
+  <button class="back-to-top" onclick="window.scrollTo({top:0,behavior:'smooth'})" title="回到顶部">↑</button>
+  <script>(function(){var s=localStorage.getItem('theme')||'blue';document.documentElement.setAttribute('data-theme',s);document.querySelectorAll('.theme-option').forEach(function(d){d.addEventListener('click',function(){var t=this.dataset.theme;document.documentElement.setAttribute('data-theme',t);localStorage.setItem('theme',t);this.closest('.theme-toggle').classList.remove('open');});});document.addEventListener('click',function(e){if(!e.target.closest('.theme-toggle')){document.querySelectorAll('.theme-toggle.open').forEach(function(t){t.classList.remove('open');});}});})();</script>
+</body>
+</html>
