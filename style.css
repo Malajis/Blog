@@ -291,6 +291,90 @@ article h2 a:hover {
   font-size: 1.8rem;
 }
 
+/* ===== 资源列表卡片（带预览图） ===== */
+.res-card {
+  display: flex;
+  align-items: stretch;
+  padding: 0;
+  overflow: hidden;
+}
+
+.res-thumb {
+  flex: 0 0 260px;
+  align-self: center;
+  aspect-ratio: 4 / 3;
+  margin: 1.5rem 0 1.5rem 1.5rem;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  background: var(--blockquote-bg);
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.res-thumb img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  transition: transform 0.3s;
+}
+
+.res-card:hover .res-thumb img {
+  transform: scale(1.04);
+}
+
+.res-body {
+  flex: 1;
+  min-width: 0;
+  padding: 1.5rem;
+  display: flex;
+  flex-direction: column;
+}
+
+.res-body h2 {
+  font-size: 1.25rem;
+  line-height: 1.4;
+  margin-bottom: 0.5rem;
+  text-wrap: balance;
+}
+
+.res-body .meta {
+  margin-bottom: 0.6rem;
+  font-size: 0.85rem;
+}
+
+.res-body .excerpt {
+  margin-bottom: 0.9rem;
+  font-size: 0.95rem;
+  line-height: 1.7;
+}
+
+.res-more {
+  margin-top: auto;
+  font-weight: 500;
+  font-size: 0.95rem;
+}
+
+@media (max-width: 640px) {
+  .res-card {
+    flex-direction: column;
+  }
+  .res-thumb {
+    flex: none;
+    width: auto;
+    aspect-ratio: 16 / 9;
+    margin: 1rem 1rem 0;
+  }
+  .res-body {
+    padding: 1rem;
+  }
+  .res-body h2 {
+    font-size: 1.15rem;
+  }
+}
+
 .post-content {
   font-size: 16px;
   line-height: 1.9;
