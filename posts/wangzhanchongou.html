@@ -34,7 +34,8 @@
   <div class="container">
     <main>
       <div class="article-card">
-        <h1 class="post-title">网站重构</h1>
+        <a class="back-link" href="/" onclick="if(history.length>1&&document.referrer.indexOf(location.origin)===0){history.back();return false}">← 返回</a>
+    <h1 class="post-title">网站重构</h1>
         <div class="meta">📅 2026-05-28 &nbsp; | &nbsp; 🏷️ 建站</div>
         <div class="post-content">
           <p>之前用的是 WordPress，功能确实很全，但问题是太臃肿了。所以重构网站，手写 html + css，Nginx 托管。</p>

@@ -627,6 +627,18 @@ footer a:hover {
   transform: translateY(-2px);
 }
 
+.back-link {
+  display: inline-block;
+  font-size: 0.9rem;
+  color: var(--text-secondary);
+  margin-bottom: 0.9rem;
+  transition: color 0.2s;
+}
+
+.back-link:hover {
+  color: var(--primary);
+}
+
 @media (max-width: 768px) {
   .container {
     flex-direction: column;
