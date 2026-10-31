@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="zh-CN" data-theme="green">
+<head>
+  <meta charset="UTF-8">
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>NbtSpawner - 带 NBT 的刷怪笼 - Malajis's Blog</title>
+  <link rel="stylesheet" href="../style.css">
+</head>
+<body>
+  <nav>
+    <div class="nav-inner">
+      <a href="../" class="logo">Malajis's Blog</a>
+      <div class="nav-right">
+        <div class="nav-links">
+          <a href="../">首页</a>
+          <a href="../pages/resources">资源</a>
+          <a href="../pages/mygirl">我的女孩</a>
+        </div>
+        <div class="theme-toggle">
+          <button class="theme-btn" onclick="this.parentElement.classList.toggle('open')" title="切换主题">☀</button>
+          <div class="theme-dropdown">
+            <span class="theme-option" data-theme="green">墨绿</span>
+            <span class="theme-option" data-theme="blue">蓝色</span>
+            <span class="theme-option" data-theme="dark">暗色</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </nav>
+  <div class="container">
+    <main>
+      <div class="article-card">
+        <h1 class="post-title">NbtSpawner - 带 NBT 的刷怪笼</h1>
+        <div class="meta">📅 2026-11-01 &nbsp; | &nbsp; 🏷️ 资源</div>
+        <div class="post-content">
+          <p>让玩家可以放置带 NBT 的刷怪笼（比如小白刷怪笼、刷僵尸加蜘蛛的混合刷怪笼），并且让刷怪笼在生存模式下用任意工具、甚至空手都能挖下来，掉落物还保留原来的 NBT。两个功能都可以在 config.yml 里单独开关。</p>
+          <p><a href="https://github.com/Malajis/NbtSpawner/releases" class="btn-green" target="_blank" rel="noopener">点击下载该插件</a> <a href="https://github.com/Malajis/NbtSpawner" class="btn-orange" target="_blank" rel="noopener">查看源代码</a></p>
+          <h2>前置说明</h2>
+          <p>只支持 Paper 1.21.x（1.21.5 及以上），不兼容 Spigot 和纯 CraftBukkit。</p>
+          <p>原版有两个限制：刷怪笼的方块实体 NBT 在 onlyOpCanSetNbt 的黑名单里，普通玩家放下时 NBT 会被直接丢掉；刷怪笼本身也没有战利品表，所以生存模式挖掉永远什么都不掉。这个插件补的就是这两点。</p>
+          <h2>功能说明</h2>
+          <p>玩家手上拿着带 NBT 的刷怪笼放下后，方块实体真正保留这份 NBT：刷什么怪、生成延迟、生成范围、生成数量都不再需要 OP 或创造模式。</p>
+          <p>刷怪笼在生存模式下可以用任意工具挖掉并掉落刷怪笼本体。insta-break 设为 true 时一挖即碎，设为 false 保持原版挖掘速度。</p>
+          <p>挖下来的刷怪笼放回去还是原来那个刷怪笼，掉落物会保留 NBT（break.keep-nbt）。</p>
+          <p>经验掉落默认关闭。开启后按原版 15~44 点计算，而且不再要求用"正确工具"，但"放下再挖"可以无限刷经验，生存服别开。</p>
+          <p>所有开关都关掉之后就是完全的原版行为，插件不会干预任何方块。</p>
+          <!-- 截图：用命令拿到的小白刷怪笼（物品名/提示） -->
+          <figure><img src="/uploads/images/nbtspawner-give.png" alt=""></figure>
+          <!-- 截图：玩家放下刷怪笼后真的在刷怪（例如骷髅） -->
+          <figure><img src="/uploads/images/nbtspawner-place.png" alt=""></figure>
+          <!-- 截图：生存模式挖掉后掉落的刷怪笼，放回依然是原来的刷怪笼 -->
+          <figure><img src="/uploads/images/nbtspawner-drop.png" alt=""></figure>
+          <h2>怎么拿到带 NBT 的刷怪笼</h2>
+          <p>创造模式和 OP 可以用命令直接拿，1.21 的组件写法是这样（下面这条是小白刷怪笼）：</p>
+          <pre><code>/give @p spawner[block_entity_data={id:"minecraft:mob_spawner",SpawnData:{entity:{id:"minecraft:skeleton"}}}]</code></pre>
+          <p>也可以直接从刷怪笼建筑里挖，开启 break.drop-spawner 后，掉落物会自动携带原地形刷怪笼的 NBT。</p>
+          <h2>插件命令与权限</h2>
+          <h3>管理员命令</h3>
+          <table><thead><tr><th>命令</th><th>描述</th><th>权限</th></tr></thead><tbody><tr><td>/nbtspawner reload</td><td>重新加载 config.yml</td><td>nbtspawner.admin</td></tr><tr><td>/nbtspawner selftest</td><td>跑一遍"放置 → 挖掘 → 重新放置"的 NBT 往返自检</td><td>nbtspawner.admin</td></tr><tr><td>/nbtspawner info</td><td>查看当前开关状态和内部 API 是否可用</td><td>nbtspawner.admin</td></tr></tbody></table>
+          <p>管理员命令需要 nbtspawner.admin 权限，默认只有 OP 拥有。</p>
+          <p>nbtspawner.place：当 place.require-permission 设为 true 时，放置带 NBT 的刷怪笼需要该权限，默认所有人拥有。没有权限的玩家放置会被取消并提示，物品不会丢 NBT。</p>
+          <h2>配置文件：</h2>
+          <pre><code>place:
+  enabled: true              # 允许放置带 NBT 的刷怪笼
+  require-permission: false  # 是否需要 nbtspawner.place 权限
+
+break:
+  enabled: true              # 是否让刷怪笼可以被挖掉并掉落
+  insta-break: false         # true = 一挖即碎；false = 保持原版挖掘速度
+  drop-spawner: true         # 是否掉落刷怪笼本体
+  keep-nbt: true             # 掉落物是否保留 NBT
+  drop-exp: false            # 是否掉落经验（15~44），开了就能放下→挖掉无限刷经验
+
+debug:
+  self-test: false           # 启动时自动跑一次自检并打印往返结果
+  self-test-shutdown: true   # 自检结束后自动关闭服务器（自动化测试用）</code></pre>
+          <h2>自检（排查问题用）</h2>
+          <p>把 debug.self-test 设为 true 后重启，控制台会打印完整的往返结果，全部通过时末尾是 ===== 结果: PASS =====。</p>
+          <p>自检只会在出生点旁边 256 格、y 约 100~240 的空地上临时放一个刷怪笼，结束后立刻复原成原来的方块。不想反复自检的话，记得改回 false。</p>
+          <h2>几个注意点</h2>
+          <p>经验开关默认是关的，这是故意的：开了之后玩家可以放下再挖无限刷经验，生存服建议一直保持 false。</p>
+          <p>和其它"刷怪笼掉落"类插件同时开 break.enabled 可能会重复掉落，请二选一。</p>
+          <p>1.21.4 及以前没有 1.21.5 重构后的那套 API，插件会在启动日志里提示内部 API 不可用并自动关掉相关功能，不会崩服。</p>
+          <p>Console 里看到多个经验球是正常的：原版会把 15~44 点经验按规则拆成 1~3 个球（比如 27 点拆成 7+7+7+6）。</p>
+        </div>
+      </div>
+    </main>
+    <aside>
+      <div class="widget"><h3>👤 关于博主</h3><p>一个 Minecraft 服主 & 插件开发者。</p></div>
+      <div class="widget"><h3>📂 分类目录</h3><ul><li><a href="../pages/fenxiang">分享 (1)</a></li><li><a href="../pages/jianzhan">建站 (2)</a></li></ul></div>
+      <div class="widget"><h3>📦 资源列表</h3><ul><li><a href="islandreward">IslandReward</a></li><li><a href="weeklystorage">WeeklyStorage</a></li><li><a href="betterrespawn">BetterRespawn</a></li><li><a href="betteraccess">JoinActionbar</a></li><li><a href="welcome">Welcome</a></li><li><a href="equipmentprotect">EquipmentProtect</a></li><li><a href="mobcontrol">MobControl</a></li><li><a href="nbtspawner">NbtSpawner</a></li></ul></div>
+    </aside>
+  </div>
+  <footer><p>© 2026 Malajis's Blog</p><p><a href="https://beian.miit.gov.cn/" target="_blank" rel="noopener">闽ICP备2026010795号-1</a></p></footer>
+  <button class="back-to-top" onclick="window.scrollTo({top:0,behavior:'smooth'})" title="回到顶部">↑</button>
+  <script>(function(){var s=localStorage.getItem('theme');if(['blue','green','dark'].indexOf(s)<0)s='green';document.documentElement.setAttribute('data-theme',s);document.querySelectorAll('.theme-option').forEach(function(d){d.addEventListener('click',function(){var t=this.dataset.theme;document.documentElement.setAttribute('data-theme',t);localStorage.setItem('theme',t);this.closest('.theme-toggle').classList.remove('open');});});document.addEventListener('click',function(e){if(!e.target.closest('.theme-toggle')){document.querySelectorAll('.theme-toggle.open').forEach(function(t){t.classList.remove('open');});}});})();</script>
+</body>
+</html>

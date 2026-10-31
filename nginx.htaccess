@@ -1,0 +1,15 @@
+# ===== Malajis's Blog :: Nginx 补充配置 =====
+# 此文件被本地 phpstudy 的 Nginx 站点配置通过
+#   include F:/phpstudy/phpstudy_pro/WWW/Blog.com/nginx.htaccess;
+# 引入到 location / 里，不要删，否则 phpstudy 切到 Nginx 时会因 include 找不到文件而启动失败。
+
+charset utf-8;
+
+gzip on;
+gzip_types text/plain text/css text/javascript application/javascript text/xml application/xml image/svg+xml;
+
+# 去掉 .html 后缀访问：/pages/resources -> /pages/resources.html
+try_files $uri $uri.html $uri/ =404;
+
+# 使用站点自己的 404 页
+error_page 404 /404.html;

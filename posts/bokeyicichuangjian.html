@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="zh-CN" data-theme="blue">
+<html lang="zh-CN" data-theme="green">
 <head>
   <meta charset="UTF-8">
   <link rel="icon" href="/favicon.svg" type="image/svg+xml">
@@ -10,7 +10,7 @@
 <body>
   <nav>
     <div class="nav-inner">
-      <a href="../" class="logo">🌿 Malajis's Blog</a>
+      <a href="../" class="logo">Malajis's Blog</a>
       <div class="nav-right">
         <div class="nav-links">
           <a href="../">首页</a>
@@ -20,10 +20,8 @@
         <div class="theme-toggle">
           <button class="theme-btn" onclick="this.parentElement.classList.toggle('open')" title="切换主题">☀</button>
           <div class="theme-dropdown">
-            <span class="theme-option" data-theme="blue">蓝色</span>
             <span class="theme-option" data-theme="green">墨绿</span>
-            <span class="theme-option" data-theme="purple">紫色</span>
-            <span class="theme-option" data-theme="warm">暖橙</span>
+            <span class="theme-option" data-theme="blue">蓝色</span>
             <span class="theme-option" data-theme="dark">暗色</span>
           </div>
         </div>
@@ -43,13 +41,13 @@
       </div>
     </main>
     <aside>
-      <div class="widget"><h3>👤 关于博主</h3><p>一个 Minecraft 服主 & 插件开发者。喜欢折腾服务器、分享学习过程。</p></div>
+      <div class="widget"><h3>👤 关于博主</h3><p>一个 Minecraft 服主 & 插件开发者。</p></div>
       <div class="widget"><h3>📂 分类目录</h3><ul><li><a href="../pages/fenxiang">分享 (1)</a></li><li><a href="../pages/jianzhan">建站 (2)</a></li></ul></div>
-      <div class="widget"><h3>📦 资源列表</h3><ul><li><a href="../resources/islandreward">IslandReward</a></li><li><a href="../resources/weeklystorage">WeeklyStorage</a></li><li><a href="../resources/betterrespawn">BetterRespawn</a></li><li><a href="../resources/betteraccess">JoinActionbar</a></li><li><a href="../resources/welcome">Welcome</a></li><li><a href="../resources/equipmentprotect">EquipmentProtect</a></li></ul></div>
+      <div class="widget"><h3>📦 资源列表</h3><ul><li><a href="../resources/islandreward">IslandReward</a></li><li><a href="../resources/weeklystorage">WeeklyStorage</a></li><li><a href="../resources/betterrespawn">BetterRespawn</a></li><li><a href="../resources/betteraccess">JoinActionbar</a></li><li><a href="../resources/welcome">Welcome</a></li><li><a href="../resources/equipmentprotect">EquipmentProtect</a></li><li><a href="../resources/mobcontrol">MobControl</a></li><li><a href="../resources/nbtspawner">NbtSpawner</a></li></ul></div>
     </aside>
   </div>
   <footer><p>© 2026 Malajis's Blog</p><p><a href="https://beian.miit.gov.cn/" target="_blank" rel="noopener">闽ICP备2026010795号-1</a></p></footer>
   <button class="back-to-top" onclick="window.scrollTo({top:0,behavior:'smooth'})" title="回到顶部">↑</button>
-  <script>(function(){var s=localStorage.getItem('theme')||'blue';document.documentElement.setAttribute('data-theme',s);document.querySelectorAll('.theme-option').forEach(function(d){d.addEventListener('click',function(){var t=this.dataset.theme;document.documentElement.setAttribute('data-theme',t);localStorage.setItem('theme',t);this.closest('.theme-toggle').classList.remove('open');});});document.addEventListener('click',function(e){if(!e.target.closest('.theme-toggle')){document.querySelectorAll('.theme-toggle.open').forEach(function(t){t.classList.remove('open');});}});})();</script>
+  <script>(function(){var s=localStorage.getItem('theme');if(['blue','green','dark'].indexOf(s)<0)s='green';document.documentElement.setAttribute('data-theme',s);document.querySelectorAll('.theme-option').forEach(function(d){d.addEventListener('click',function(){var t=this.dataset.theme;document.documentElement.setAttribute('data-theme',t);localStorage.setItem('theme',t);this.closest('.theme-toggle').classList.remove('open');});});document.addEventListener('click',function(e){if(!e.target.closest('.theme-toggle')){document.querySelectorAll('.theme-toggle.open').forEach(function(t){t.classList.remove('open');});}});})();</script>
 </body>
 </html>

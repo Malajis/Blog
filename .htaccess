@@ -1,0 +1,46 @@
+# ===== Malajis's Blog :: Apache 配置（本地 phpstudy 用）=====
+# 站点所有内链都是"去掉 .html 后缀"的干净链接，例如 pages/resources、posts/chuyuanle，
+# 而仓库里存的是真实文件 pages/resources.html。
+# 生产环境是 Nginx，重写规则写在 Nginx 的 server 配置里，所以线上正常；
+# 本地 phpstudy 跑的是 Apache 时，必须靠这个 .htaccess 才能把 /pages/resources 映射到 resources.html。
+
+# 默认首页
+DirectoryIndex index.html
+
+# 强制 UTF-8 编码
+AddDefaultCharset UTF-8
+
+# 开启 Gzip 压缩
+<IfModule mod_deflate.c>
+    AddOutputFilterByType DEFLATE text/html text/plain text/css text/javascript application/javascript text/xml application/xml image/svg+xml
+</IfModule>
+
+# 静态资源缓存
+<IfModule mod_expires.c>
+    ExpiresActive On
+    ExpiresByType image/jpg "access plus 30 days"
+    ExpiresByType image/jpeg "access plus 30 days"
+    ExpiresByType image/png "access plus 30 days"
+    ExpiresByType image/gif "access plus 30 days"
+    ExpiresByType image/webp "access plus 30 days"
+    ExpiresByType image/svg+xml "access plus 30 days"
+    ExpiresByType text/css "access plus 30 days"
+    ExpiresByType application/javascript "access plus 30 days"
+    ExpiresByType font/woff2 "access plus 30 days"
+</IfModule>
+
+# 去掉 .html 后缀访问
+<IfModule mod_rewrite.c>
+    RewriteEngine On
+    RewriteBase /
+
+    # 真实存在的文件/目录直接放行（index.html、style.css、uploads/* 等）
+    RewriteCond %{REQUEST_FILENAME} !-f
+    RewriteCond %{REQUEST_FILENAME} !-d
+    # 对应的 .html 文件存在才重写
+    RewriteCond %{REQUEST_FILENAME}.html -f
+    RewriteRule ^(.+)$ $1.html [L]
+</IfModule>
+
+# 自定义 404 页面（覆盖 vhost 里指向不存在的 /error/404.html 的设置）
+ErrorDocument 404 /404.html

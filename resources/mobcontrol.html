@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="zh-CN" data-theme="green">
+<head>
+  <meta charset="UTF-8">
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>MobControl - 岛屿怪物生成控制 - Malajis's Blog</title>
+  <link rel="stylesheet" href="../style.css">
+</head>
+<body>
+  <nav>
+    <div class="nav-inner">
+      <a href="../" class="logo">Malajis's Blog</a>
+      <div class="nav-right">
+        <div class="nav-links">
+          <a href="../">首页</a>
+          <a href="../pages/resources">资源</a>
+          <a href="../pages/mygirl">我的女孩</a>
+        </div>
+        <div class="theme-toggle">
+          <button class="theme-btn" onclick="this.parentElement.classList.toggle('open')" title="切换主题">☀</button>
+          <div class="theme-dropdown">
+            <span class="theme-option" data-theme="green">墨绿</span>
+            <span class="theme-option" data-theme="blue">蓝色</span>
+            <span class="theme-option" data-theme="dark">暗色</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </nav>
+  <div class="container">
+    <main>
+      <div class="article-card">
+        <h1 class="post-title">MobControl - 岛屿怪物生成控制</h1>
+        <div class="meta">📅 2026-11-01 &nbsp; | &nbsp; 🏷️ 资源</div>
+        <div class="post-content">
+          <p>给玩家一个面板，让他们自己决定岛上哪些怪物不许生成。开关状态存在每个岛自己身上（BentoBox 岛屿 metadata），重启服务器、甚至换数据库都不会丢。默认配置里只写了史莱姆：玩家点一下史莱姆图标，自己岛上就再也不刷史莱姆了。</p>
+          <p><a href="https://github.com/Malajis/MobControl/releases" class="btn-green" target="_blank" rel="noopener">点击下载该插件</a> <a href="https://github.com/Malajis/MobControl" class="btn-orange" target="_blank" rel="noopener">查看源代码</a></p>
+          <h2>前置插件</h2>
+          <p>BentoBox 3.x，外加至少一个游戏模式（BSkyBlock / AcidIsland / CaveBlock 等）。</p>
+          <p>插件要放进 plugins/BentoBox/addons/ 目录，不是 plugins/ 根目录，BentoBox 只在自己启用时扫描 addons 文件夹。首次启动会生成 plugins/BentoBox/addons/MobControl/config.yml。</p>
+          <h2>功能说明</h2>
+          <p>面板里一个怪物一个刷怪蛋图标：绿色名字加附魔光晕表示允许生成（默认），红色名字没有光晕表示禁止生成。点一下立刻切换，图标原地刷新，面板不会关掉。</p>
+          <p>能切换哪些怪物由 config.yml 里的 mobs 列表决定，只有写进列表的怪物才会出现在面板里，默认只配了史莱姆。</p>
+          <p>开关状态保存在岛屿的 metaData 里，key 是 mobcontrol:怪物名。重启服务器、更换数据库、备份还原岛屿都不会丢，重新点开就恢复生成。</p>
+          <p>默认只拦自然生成。刷怪笼、刷怪蛋、史莱姆分裂和别的插件刷出来的怪都不受影响；把 spawn.only-natural 改成 false，才会把这个岛上该怪物的所有生成来源一起拦掉。</p>
+          <p>只有岛主和岛屿成员能改这个岛，带了 admin 权限的管理员可以开关任意岛的怪物。</p>
+          <!-- 截图：岛屿怪物生成控制面板（左允许 / 右禁止，或同一面板两种状态） -->
+          <figure><img src="/uploads/images/mobcontrol-panel-gui.png" alt=""></figure>
+          <!-- 截图：点击图标切换后的聊天栏提示 -->
+          <figure><img src="/uploads/images/mobcontrol-toggle-message.png" alt=""></figure>
+          <!-- 截图：plugins/BentoBox/addons/MobControl/config.yml -->
+          <figure><img src="/uploads/images/mobcontrol-config.png" alt=""></figure>
+          <h2>插件命令与权限</h2>
+          <h3>玩家命令</h3>
+          <table><thead><tr><th>命令</th><th>描述</th></tr></thead><tbody><tr><td>/is mob</td><td>打开自己岛的怪物生成控制面板，挂在岛屿命令下面（/island mob 也行，别名 /is mobs）</td></tr><tr><td>/mobcontrol</td><td>备用独立命令（别名 /mobs），方便控制台或没装游戏模式时用</td></tr></tbody></table>
+          <h3>管理员命令</h3>
+          <table><thead><tr><th>命令</th><th>描述</th></tr></thead><tbody><tr><td>/mobcontrol</td><td>带 mobcontrol.admin 权限时可以开关任意岛的怪物</td></tr><tr><td>/bentobox reload</td><td>改完 config.yml 后重载，不需要重进世界</td></tr></tbody></table>
+          <p>管理员命令需要 mobcontrol.admin 权限。</p>
+          <h2>权限</h2>
+          <table><thead><tr><th>权限</th><th>默认</th><th>作用</th></tr></thead><tbody><tr><td>mobcontrol.use</td><td>所有玩家</td><td>用 /mobcontrol 打开面板</td></tr><tr><td>mobcontrol.admin</td><td>OP</td><td>用 /mobcontrol 开关任意岛的怪物</td></tr><tr><td>bskyblock.mobcontrol.use</td><td>所有玩家</td><td>用 /is mob 打开面板（每个游戏模式各注册一份，AcidIsland 就是 acidisland.mobcontrol.use）</td></tr><tr><td>bskyblock.mobcontrol.admin</td><td>OP</td><td>用 /is mob 开关任意岛的怪物</td></tr></tbody></table>
+          <h2>配置文件：</h2>
+          <pre><code>mobs:
+  - SLIME
+  # - ZOMBIE
+  # - SKELETON
+gui:
+  title: '&amp;8岛屿怪物生成控制'
+  rows: 3
+  allowed-lore: '&amp;a当前状态: &amp;2允许生成'
+  blocked-lore: '&amp;c当前状态: &amp;4禁止生成'
+  click-hint: '&amp;7点击切换'
+spawn:
+  # true = 只拦自然生成（刷怪笼、刷怪蛋、史莱姆分裂、插件生成都不受影响）
+  # false = 该怪物在这个岛上的所有生成来源都拦
+  only-natural: true
+messages:
+  no-island: '&amp;c你还没有岛屿。'
+  not-your-island: '&amp;c这不是你的岛屿，你没有权限修改。'
+  no-mobs: '&amp;c服务端没有配置任何可切换的怪物。'
+  toggled-on: '&amp;a[怪物控制] 已允许 &amp;e%mob% &amp;a在你的岛屿生成。'
+  toggled-off: '&amp;c[怪物控制] 已禁止 &amp;e%mob% &amp;c在你的岛屿生成。'</code></pre>
+          <h2>怪物名怎么写</h2>
+          <p>直接填 Bukkit EntityType 的名字，SLIME、ZOMBIE、SKELETON、CREEPER、ENDERMAN、PHANTOM、WITCH 都可以，大小写都行。写错的名字会被跳过，并在控制台提示。</p>
+          <p>要加新怪物，往 mobs 列表里追加一项，执行 /bentobox reload 或重启服务器即可，玩家不用重进世界。</p>
+          <h2>几个注意点</h2>
+          <p>面板里只显示 mobs 里配置过的怪物。配置得越多，面板行数就要跟着调大（rows 支持 1~6 行）。</p>
+          <p>messages 里所有文本都支持 &amp; 颜色码，%mob% 会被替换成怪物名。</p>
+          <p>重置岛屿后会得到一个全新的岛，metadata 也是新的，之前的开关不会继承过来。想保持默认关闭的话，要等玩家在新岛上再点一次。</p>
+        </div>
+      </div>
+    </main>
+    <aside>
+      <div class="widget"><h3>👤 关于博主</h3><p>一个 Minecraft 服主 & 插件开发者。</p></div>
+      <div class="widget"><h3>📂 分类目录</h3><ul><li><a href="../pages/fenxiang">分享 (1)</a></li><li><a href="../pages/jianzhan">建站 (2)</a></li></ul></div>
+      <div class="widget"><h3>📦 资源列表</h3><ul><li><a href="islandreward">IslandReward</a></li><li><a href="weeklystorage">WeeklyStorage</a></li><li><a href="betterrespawn">BetterRespawn</a></li><li><a href="betteraccess">JoinActionbar</a></li><li><a href="welcome">Welcome</a></li><li><a href="equipmentprotect">EquipmentProtect</a></li><li><a href="mobcontrol">MobControl</a></li><li><a href="nbtspawner">NbtSpawner</a></li></ul></div>
+    </aside>
+  </div>
+  <footer><p>© 2026 Malajis's Blog</p><p><a href="https://beian.miit.gov.cn/" target="_blank" rel="noopener">闽ICP备2026010795号-1</a></p></footer>
+  <button class="back-to-top" onclick="window.scrollTo({top:0,behavior:'smooth'})" title="回到顶部">↑</button>
+  <script>(function(){var s=localStorage.getItem('theme');if(['blue','green','dark'].indexOf(s)<0)s='green';document.documentElement.setAttribute('data-theme',s);document.querySelectorAll('.theme-option').forEach(function(d){d.addEventListener('click',function(){var t=this.dataset.theme;document.documentElement.setAttribute('data-theme',t);localStorage.setItem('theme',t);this.closest('.theme-toggle').classList.remove('open');});});document.addEventListener('click',function(e){if(!e.target.closest('.theme-toggle')){document.querySelectorAll('.theme-toggle.open').forEach(function(t){t.classList.remove('open');});}});})();</script>
+</body>
+</html>

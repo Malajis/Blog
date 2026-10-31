@@ -1,4 +1,4 @@
-:root, [data-theme="blue"] {
+:root {
   --primary: #1a73e8;
   --primary-hover: #1256b3;
   --primary-light: #eef3fc;
@@ -20,7 +20,7 @@
   --table-th-bg: #f5f7fa;
 }
 
-[data-theme="green"] {
+:root[data-theme="green"] {
   --primary: #2d8a56;
   --primary-hover: #236e45;
   --primary-light: #e6f4ea;
@@ -42,51 +42,7 @@
   --table-th-bg: #f0f7f2;
 }
 
-[data-theme="purple"] {
-  --primary: #7c3aed;
-  --primary-hover: #6d28d9;
-  --primary-light: #f3eeff;
-  --bg: #faf8ff;
-  --card-bg: #ffffff;
-  --text: #3a2e4a;
-  --text-secondary: #7a6e8a;
-  --text-muted: #9a8eaa;
-  --border: #e5ddf5;
-  --footer-bg: #2d1b4a;
-  --footer-text: #9a8eaa;
-  --tag-bg: #f3eeff;
-  --tag-color: #7c3aed;
-  --nav-bg: #ffffff;
-  --nav-shadow: rgba(0,0,0,0.06);
-  --code-bg: #f3eeff;
-  --code-color: #7c3aed;
-  --blockquote-bg: #fbf8ff;
-  --table-th-bg: #f7f2ff;
-}
-
-[data-theme="warm"] {
-  --primary: #d97706;
-  --primary-hover: #b45309;
-  --primary-light: #fef3c7;
-  --bg: #fefcf5;
-  --card-bg: #ffffff;
-  --text: #3d3522;
-  --text-secondary: #7a7055;
-  --text-muted: #9a9070;
-  --border: #ede5d0;
-  --footer-bg: #2d2410;
-  --footer-text: #9a9070;
-  --tag-bg: #fef3c7;
-  --tag-color: #d97706;
-  --nav-bg: #ffffff;
-  --nav-shadow: rgba(0,0,0,0.06);
-  --code-bg: #fef8e6;
-  --code-color: #d97706;
-  --blockquote-bg: #fffef8;
-  --table-th-bg: #fdf6e8;
-}
-
-[data-theme="dark"] {
+:root[data-theme="dark"] {
   --primary: #60a5fa;
   --primary-hover: #93bbfd;
   --primary-light: #1e3a5f;
@@ -198,6 +154,10 @@ nav {
   transform: rotate(30deg);
 }
 
+:root[data-theme="dark"] .theme-btn {
+  filter: invert(1);
+}
+
 .theme-dropdown {
   display: none;
   position: absolute;
@@ -245,9 +205,7 @@ nav {
 
 .theme-option[data-theme="blue"]::before { background: #1a73e8; }
 .theme-option[data-theme="green"]::before { background: #2d8a56; }
-.theme-option[data-theme="purple"]::before { background: #7c3aed; }
-.theme-option[data-theme="warm"]::before { background: #d97706; }
-.theme-option[data-theme="dark"]::before { background: #555; }
+.theme-option[data-theme="dark"]::before { background: #1a1a2e; box-shadow: inset 0 0 0 1px rgba(255,255,255,0.30); }
 
 .container {
   max-width: 1100px;

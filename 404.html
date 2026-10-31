@@ -1,29 +1,27 @@
 <!DOCTYPE html>
-<html lang="zh-CN" data-theme="blue">
+<html lang="zh-CN" data-theme="green">
 <head>
   <meta charset="UTF-8">
   <link rel="icon" href="/favicon.svg" type="image/svg+xml">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>404 - 页面不存在 - Malajis's Blog</title>
-  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="/style.css">
 </head>
 <body>
   <nav>
     <div class="nav-inner">
-      <a href="./" class="logo">🌿 Malajis's Blog</a>
+      <a href="/" class="logo">Malajis's Blog</a>
       <div class="nav-right">
         <div class="nav-links">
-          <a href="./">首页</a>
-          <a href="pages/resources">资源</a>
-          <a href="pages/mygirl">我的女孩</a>
+          <a href="/">首页</a>
+          <a href="/pages/resources">资源</a>
+          <a href="/pages/mygirl">我的女孩</a>
         </div>
         <div class="theme-toggle">
           <button class="theme-btn" onclick="this.parentElement.classList.toggle('open')" title="切换主题">☀</button>
           <div class="theme-dropdown">
-            <span class="theme-option" data-theme="blue">蓝色</span>
             <span class="theme-option" data-theme="green">墨绿</span>
-            <span class="theme-option" data-theme="purple">紫色</span>
-            <span class="theme-option" data-theme="warm">暖橙</span>
+            <span class="theme-option" data-theme="blue">蓝色</span>
             <span class="theme-option" data-theme="dark">暗色</span>
           </div>
         </div>
@@ -36,7 +34,7 @@
       <div class="article-card">
         <h1 style="font-size:4rem;color:#ccc;">404</h1>
         <p style="color:#999;font-size:1.1rem;">你访问的页面不存在。</p>
-        <p style="margin-top:1rem;"><a href="./">← 返回首页</a></p>
+        <p style="margin-top:1rem;"><a href="/">← 返回首页</a></p>
       </div>
     </main>
   </div>
@@ -48,6 +46,6 @@
 
   <button class="back-to-top" onclick="window.scrollTo({top:0,behavior:'smooth'})" title="回到顶部">↑</button>
 
-  <script>(function(){var s=localStorage.getItem('theme')||'blue';document.documentElement.setAttribute('data-theme',s);document.querySelectorAll('.theme-option').forEach(function(d){d.addEventListener('click',function(){var t=this.dataset.theme;document.documentElement.setAttribute('data-theme',t);localStorage.setItem('theme',t);this.closest('.theme-toggle').classList.remove('open');});});document.addEventListener('click',function(e){if(!e.target.closest('.theme-toggle')){document.querySelectorAll('.theme-toggle.open').forEach(function(t){t.classList.remove('open');});}});})();</script>
+  <script>(function(){var s=localStorage.getItem('theme');if(['blue','green','dark'].indexOf(s)<0)s='green';document.documentElement.setAttribute('data-theme',s);document.querySelectorAll('.theme-option').forEach(function(d){d.addEventListener('click',function(){var t=this.dataset.theme;document.documentElement.setAttribute('data-theme',t);localStorage.setItem('theme',t);this.closest('.theme-toggle').classList.remove('open');});});document.addEventListener('click',function(e){if(!e.target.closest('.theme-toggle')){document.querySelectorAll('.theme-toggle.open').forEach(function(t){t.classList.remove('open');});}});})();</script>
 </body>
 </html>

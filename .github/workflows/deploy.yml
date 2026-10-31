@@ -1,0 +1,38 @@
+name: Deploy to Server
+
+on:
+  push:
+    branches: [master]
+  workflow_dispatch:
+
+concurrency:
+  group: deploy
+  cancel-in-progress: true
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: 检出仓库
+        uses: actions/checkout@v4
+
+      - name: 写入 SSH 私钥
+        run: |
+          install -m 700 -d ~/.ssh
+          printf '%s\n' "${{ secrets.SSH_KEY }}" > ~/.ssh/deploy_key
+          chmod 600 ~/.ssh/deploy_key
+
+      - name: rsync 同步到服务器
+        run: |
+          rsync -az --delete --chown=www:www \
+            --exclude='.git' \
+            --exclude='.github' \
+            --exclude='.user.ini' \
+            --exclude='.well-known' \
+            --exclude='deploy_key*' \
+            -e "ssh -i ~/.ssh/deploy_key -p ${{ secrets.SSH_PORT }} -o StrictHostKeyChecking=accept-new" \
+            ./ "${{ secrets.SSH_USER }}@${{ secrets.SSH_HOST }}:${{ secrets.REMOTE_PATH }}/"
+
+      - name: 清理密钥
+        if: always()
+        run: rm -f ~/.ssh/deploy_key
