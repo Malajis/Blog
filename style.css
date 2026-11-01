@@ -11,7 +11,6 @@
   --footer-bg: #222222;
   --footer-text: #aaaaaa;
   --tag-bg: #eef3fc;
-  --tag-color: #1a73e8;
   --nav-bg: #ffffff;
   --nav-shadow: rgba(0,0,0,0.06);
   --code-bg: #eef3fc;
@@ -33,7 +32,6 @@
   --footer-bg: #1a2e22;
   --footer-text: #8a9a8e;
   --tag-bg: #e6f4ea;
-  --tag-color: #2d8a56;
   --nav-bg: #ffffff;
   --nav-shadow: rgba(0,0,0,0.06);
   --code-bg: #e6f4ea;
@@ -55,7 +53,6 @@
   --footer-bg: #0f0f1a;
   --footer-text: #6b7280;
   --tag-bg: #1e3a5f;
-  --tag-color: #60a5fa;
   --nav-bg: #252540;
   --nav-shadow: rgba(0,0,0,0.3);
   --code-bg: #2a2a45;
@@ -551,20 +548,6 @@ article h2 a:hover {
 
 .widget ul li a:hover {
   color: var(--primary);
-}
-
-.tag-cloud a {
-  display: inline-block;
-  background: var(--tag-bg);
-  padding: 0.2rem 0.8rem;
-  border-radius: 20px;
-  margin: 0.2rem;
-  font-size: 0.9rem;
-  color: var(--tag-color);
-}
-
-.tag-cloud a:hover {
-  opacity: 0.8;
 }
 
 .post-nav {
